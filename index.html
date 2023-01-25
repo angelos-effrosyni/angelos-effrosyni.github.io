@@ -249,19 +249,20 @@
 						<div class="col-md-4 col-sm-4">
 							<div class="form-group">
 								<label for="name" class="sr-only">Ονοματεπώνυμο</label>
-								<input type="name" name="name" class="form-control" id="name" placeholder="Ονοματεπώνυμο"/>
+								<input type="name" name="name" class="form-control" id="name" placeholder="Ονοματεπώνυμο" required/>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
 							<div class="form-group">
 								<label for="individuals" class="sr-only">Αριθμός ατόμων</label>
-								<input class="form-control" id="individuals" name="individuals" placeholder="Αριθμός ατόμων">
+								<input class="form-control" id="individuals" name="individuals" placeholder="Αριθμός ατόμων" required>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
 							<div class="form-group">
 								<label for="coming" class="sr-only">Συμμετοχή</label>
-								<select class="form-control" id="coming" name="coming">
+								<select class="form-control" id="coming" name="coming" required>
+									<option value="" disabled selected hidden>Θα παρευρεθείτε;</option>
 									<option value="Ναι">Ναι</option>
 									<option value="Όχι">Όχι</option>
 								</select>
