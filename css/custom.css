@@ -52,7 +52,7 @@ html{scroll-behavior:smooth}
     background-color: #F14E95 !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .main-names {
       font-size: 3em !important;
     }
@@ -70,3 +70,13 @@ html{scroll-behavior:smooth}
         font-size: 1.5em;
     }
 }
+
+#monogram {
+    height: 1em;
+}
+
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
