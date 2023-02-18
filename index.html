@@ -103,7 +103,7 @@
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1 class="main-names">Άγγελος &amp; Ευφροσύνη</h1>
-							<h2>Σας προσκαλούμε στον γάμο μας και την βάφτιση της κορούλας μας <br/> στις 17 Ιουνίου 2023!</h2>
+							<h2>Σας προσκαλούμε στον γάμο μας και τη βάπτιση της κορούλας μας <br/> στις 17 Ιουνίου 2023!</h2>
 							<div class="simply-countdown simply-countdown-one"></div>
 							<!-- <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p> -->
 						</div>
@@ -240,7 +240,7 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Θα χαρούμε πολύ να σας δούμε από κοντά!</h2>
-					<p>Παρακολούμε ενημερώστε μας για την παρουσία σας έως 30 Απριλίου 2023.</p>
+					<p>Παρακαλούμε ενημερώστε μας για την παρουσία σας έως τις 30 Απριλίου 2023.</p>
 				</div>
 			</div>
 			<div class="row animate-box">
@@ -286,6 +286,13 @@
 			<div class="row text-center">
 				<p id="my-form-status" class="label"></p>
 			</div>
+			
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<br/>
+					<p>Εναλλακτικά, επικοινωνήστε μαζί μας στα τηλέφωνα: <br/>6949914146 (Άγγελος) <br/>6989957628 (Ευφροσύνη)</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -325,8 +332,11 @@
     // default example
     simplyCountdown('.simply-countdown-one', {
         year: 2023,
-        month: 6 + 1,
-        day: 17
+        month: 6,
+        day: 17,
+		hours: 23,
+		minutes: 30,
+		seconds: 0
     });
 
     //jQuery example
@@ -338,12 +348,17 @@
     // });
 </script>
 	<script>
+		let sent = false;
 		var form = document.getElementById("attendance-form");
 		
 		async function handleSubmit(event) {
 		  event.preventDefault();
+		  if(sent) return;
+		  sent = true;
+
 		  var status = document.getElementById("my-form-status");
 		  var data = new FormData(event.target);
+		  let com = data.get("coming");
 		  fetch(event.target.action, {
 			method: form.method,
 			body: data,
@@ -352,9 +367,10 @@
 			}
 		  }).then(response => {
 			if (response.ok) {
-			  status.innerHTML = "Ευχαριστούμε πολύ! Σας περιμένουμε!";
+			  status.innerHTML = (com == "Ναι") ? "Ευχαριστούμε πολύ! Σας περιμένουμε!" : "Ευχαριστούμε πολύ!";
 			  status.classList.add("form-success");
 			  form.reset()
+				sent = false;
 			} else {
 			  response.json().then(data => {
 				if (Object.hasOwn(data, 'errors')) {
@@ -362,12 +378,14 @@
 				} else {
 				  status.innerHTML = "Υπήρξε κάποιο πρόβλημα. Η αποστολή δεν πραγματοποιήθηκε."
 				  status.classList.add("label-danger");
+				  sent = false;
 				}
 			  })
 			}
 		  }).catch(error => {
 			status.innerHTML = "Υπήρξε κάποιο πρόβλημα. Η αποστολή δεν πραγματοποιήθηκε."
 			status.classList.add("label-danger");
+			sent = false;
 		  });
 		}
 
