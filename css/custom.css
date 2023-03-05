@@ -81,14 +81,6 @@ html{scroll-behavior:smooth}
     flex-wrap: wrap;
   }
 
-#fh5co-started .form-contol {
-    border: 1px solid #F14E95 !important;
-}
-
-#attendance-form textarea {
-    border: 1px solid #F14E95 !important;
-}
-
 /* .fh5co-heading p {
     font-size: 20px !important;
 }
